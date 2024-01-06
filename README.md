@@ -8,6 +8,7 @@ This Python module provides implementations of several sorting algorithms. The c
 - Insertion Sort
 - Heap Sort
 - Shell Sort
+- Partial Sort
 
 # How to install and import module 
 
@@ -26,21 +27,20 @@ from easiest_sort import *
 
 ## Bubble Sort
 
-Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted.
+Use Case: Simplicity and ease of understanding. Suitable for small data sets or educational purposes. Inefficient for large data sets due to quadratic complexity.
 
-```
+```python
 from easiest_sort import bubble_sort
 
 my_list = []
 bubble_sort(my_list)
-
 ```
 
 ## Merge Sort
 
-Merge Sort is a divide-and-conquer algorithm that divides the input array into two halves, recursively sorts them, and then merges the sorted halves.
+Use Case: Efficient sorting for large data sets. Relatively stable and well-suited for lists that do not fit entirely in memory
 
-```
+```python
 from easiest_sort import merge_sort
 
 my_list = []
@@ -49,21 +49,31 @@ merge_sort(my_list)
 
 ## Quick Sort
 
-Quick Sort is another divide-and-conquer algorithm that partitions the array into smaller parts and then recursively sorts them.
+Use Case: High efficiency on average and large data sets. Demonstrates good practical performance. Used in various domains, including programming languages and databases.
 
-```
+```python
 from easiest_sort import quick_sort
 
 my_list = []
 quick_sort(my_list)
 ```
-
 ## Insertion Sort
 
-Heap Sort uses a binary heap data structure to build a heap and then sorts the heap.
+Use Case: Effective for small or partially ordered data. Convenient when adding new elements to an already sorted part of an array.
 
+```python
+from easiest_sort import insertion_sort
+
+my_list = []
+insertion_sort(my_list)
 ```
-from sorting_module import heap_sort
+
+## Heap Sort
+
+Use Case: Efficient for sorting large data sets. Utilizes the "heap" data structure. Possesses predictable worst-case performance.
+
+```python
+from easiest_sort import heap_sort
 
 my_list = []
 heap_sort(my_list)
@@ -71,14 +81,55 @@ heap_sort(my_list)
 
 ## Shell Sort
 
-Shell Sort is an optimization over insertion sort that compares elements that are far apart and gradually reduces the gap between them.
+Use Case: Balances implementation simplicity with good performance. Often applied in scenarios where a trade-off between efficiency and implementation simplicity is desired.
 
-```
-from sorting_module import shell_sort
+```python
+from easiest_sort import shell_sort
 
 my_list = []
 shell_sort(my_list)
 ```
 
-In the future, I will be adding more sorting algorithms.
-I hope this module will be helpful to you.
+
+## Ascending and Descending order
+
+If you want to use descending order sorting, you should use the second argument 'order' with a value of False. Its works with every sort algorithm
+
+
+```python
+from easiest_sort import *
+
+my_list = []
+bubble_sort(my_array, order=False)
+```
+
+
+
+# Partial Sort 
+
+This module provides a partial_sort function, allowing you to perform partial sorting on a list. With this function, you can sort only the top or bottom k elements of the list, leaving the rest of the elements in their original order.
+
+## Usage
+
+```python
+from easiest_sort import partial_sort
+
+my_array = [5, 2, 8, 1, 9, 4, 7, 3, 6]
+
+x1 = partial_sort(my_array, 3, top=True)
+
+x2 = partial_sort(my_array, 3, top=False)
+```
+
+Also you can use Reverse Order for Partial Sort
+
+```python
+from easiest_sort import partial_sort
+
+my_list = [5, 2, 8, 1, 9, 4, 7, 3, 6]
+
+x = partial_sort(my_array, 3, top=True, reverse=True)
+```
+
+
+
